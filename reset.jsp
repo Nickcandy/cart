@@ -23,8 +23,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <%  session.setAttribute("id", null);
-    	session.invalidate();
+    <%  Cookie id = new Cookie("id",null);
+    	Cookie it = new Cookie("items",null);
+    	Cookie pr = new Cookie("prices",null);
+    	response.addCookie(id);
+    	response.addCookie(it);
+    	response.addCookie(pr);
     	response.sendRedirect("index.jsp");
     %>
   </body>

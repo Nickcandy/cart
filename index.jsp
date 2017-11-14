@@ -24,41 +24,46 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
      <h1> Here is Nick. I'm a noob </h1>
      <form name = "goods" action = "index.jsp" method = "post">
-     	Item:<input type = "text" name = "article"/><br>
+     	Item:<input type = "text" name = "article" /><br>
      	Price:<input type = "text" name = "price" /><br>
      	<input type = "submit" name = "Submit"/>
 
      </form>
-     <%!String newitem = null;
+
+	 <% 
+	 	String newitem = null;
      	String newprice = null;
-     	Object obj  = null;
      	int id = 0;
      	String st = null;
-		String pr[];
-		String it[];
+		String pr = null;
+		String it = null;
 		int sum = 0;
-	%>
-	 <% obj = session.getAttribute("id");
-	 	id = 0;
-	 	if (obj != null) {st = obj.toString();id = Integer.parseInt(st); }
-		it = (String[]) session.getAttribute("items[]");
-		pr = (String[]) session.getAttribute("prices[]");
-		if (pr == null) pr = new String[100];
-		if (it == null) it = new String[100];
+		int i;
+		String prcookie,itcookie;
+		Cookie[] cookies;
+	 	cookies = request.getCookies();
+	 	for (Cookie c:cookies){
+	 		if (c.getName().equals("items")) {it = c.getValue();}
+	 		if (c.getName().equals("prices")) {pr = c.getValue();}
+	 		if (c.getName().equals("id")) {st = c.getValue();if(!st.equals(""))id = Integer.parseInt(st);}
+	 		
+	 	}
 		newprice = null;
 		newitem = null;
 		newprice = request.getParameter("price");
 		newitem = request.getParameter("article");
+		out.println(newprice+"-"+newitem);
 		if((newitem != null) && (newprice != null)){
 			id ++;
-			it[id] = newitem;
-			pr[id] = newprice;
+			it = it + "," + newitem ;
+			pr = pr + "," +newprice;
 		}
-		session.setAttribute("items[]",it);
-		session.setAttribute("prices[]",pr);
-     	session.setAttribute("id", Integer.toString(id));
-		
-
+		Cookie items = new Cookie("items", it);
+		Cookie prices = new Cookie("prices", pr);
+		Cookie ids = new Cookie("id", Integer.toString(id) );
+		response.addCookie(items);
+		response.addCookie(prices);
+		response.addCookie(ids);
        %>
       <form>
      	<table>
@@ -68,15 +73,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      			<td>Price</td>
      		</tr>
      		<%
-     			int i;
      			sum = 0;
+     			String a[] = new String[100];
+     			String b[] = new String[100];
+     			a = it.split(",");
+     			b = pr.split(",");
      			for (i = 1;i <= id;i ++){
-	     			out.print("<tr><td>"+i+"<td><td>"+it[i]+"<td><td>"+pr[i]+"<td><tr>");
-	     			sum = sum + Integer.parseInt(pr[i]);
+	     			out.print("<tr><td>"+i+"<td><td>"+a[i]+"<td><td>"+b[i]+"<td><tr>");
+	     			sum = sum + Integer.parseInt(b[i]);
 	     		}
      		 %>
      		 <tr>
-     		 	<td>Sum:<%= sum %> </td>
+     		 	<td>Sum:<%=sum %> </td>
      		 </tr>
      	</table>
      </form>
