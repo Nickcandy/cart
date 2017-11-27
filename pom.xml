@@ -1,0 +1,79 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.cart</groupId>
+  <artifactId>cart</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>cart</name>
+  <url>http://maven.apache.org</url>
+
+  <!-- 设置编译打包时使用的编码 -->
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <spring.version>4.1.6.RELEASE</spring.version>
+    <java.source.version>1.6</java.source.version>
+    <java.target.version>1.6</java.target.version>
+  </properties>
+
+  <dependencies>
+
+        <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>3.8.1</version>
+          <scope>test</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency> 
+           <groupId>javax.servlet.jsp</groupId> 
+           <artifactId>jsp-api</artifactId> 
+           <version>2.1</version> 
+           <scope>provided</scope>
+        </dependency>
+
+  </dependencies>
+
+
+  <build>
+    <finalName>cart</finalName>
+    <plugins>
+ 
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <warSourceDirectory>webapp</warSourceDirectory>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+    </plugins>
+    <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.1</version>
+        <configuration>
+            <!-- 注意此处的url -->
+            <url>http://localhost:8080/manager/text</url>
+            <server>tomcat7</server> <!-- 此处的名字必须和setting.xml中配置的ID一致-->
+            <path>/cart</path> <!-- 此处的名字是项目发布的工程名-->
+        </configuration>
+    </plugin>
+
+
+  </build>
+
+
+</project>
