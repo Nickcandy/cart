@@ -73,14 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      			<td>Price</td>
      		</tr>
      		<%
-     		id = 0;
-     		cookies = request.getCookies();
-	 		for (Cookie c:cookies){
-	 		if (c.getName().equals("items")) {it = c.getValue();}
-	 		if (c.getName().equals("prices")) {pr = c.getValue();}
-	 		if (c.getName().equals("id")) {st = c.getValue();if(!st.equals(""))id = Integer.parseInt(st);}
-	 		
-	 	}
+
      			sum = 0;
      			String a[] = new String[100];
      			String b[] = new String[100];
