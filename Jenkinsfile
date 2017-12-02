@@ -1,12 +1,9 @@
 pipeline{
-	agent{
-		docker{
-			image 'nickcandy/cartap'
-			args  '-p 8888:8080'
-		}
-	}
+	agent none
 	stages{
+
 		stage('Example'){
+			agent {docker 'nickcandy/cartap'}
 			steps{
 				echo 'hello world'
 			}
