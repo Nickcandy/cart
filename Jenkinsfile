@@ -1,8 +1,9 @@
 pipeline {
     agent none
     stages {
-    	agent {docker 'alpine:latest'}
+
         stage('Example') {
+ 	        agent {docker 'alpine:latest'}
             steps { 
                 echo 'Hello World'
             }
