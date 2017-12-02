@@ -27,8 +27,7 @@ pipeline{
 				stash includes: 'target/*.war', name: 'app'
 		}
 
-		stage('dockerize'){
+
 		
-		}
 	}
 }
