@@ -2,7 +2,6 @@ pipeline{
 	agent{
 		docker{
 			image 'nickcandy/cartap'
-			label 'maven'
 			args  '-p 8888:8080'
 		}
 	}
