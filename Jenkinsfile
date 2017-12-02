@@ -3,7 +3,7 @@ pipeline{
 	stages{
 
 		stage('Example'){
-			agent {docker 'nickcandy/cartap'}
+			agent any
 			steps{
 				echo 'hello world'
 			}
