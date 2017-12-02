@@ -6,11 +6,10 @@ pipeline{
 		}
 	}
 	stages{
-		stage{
-		steps{
-			echo 'hello world'
+		stage('Example'){
+			steps{
+				echo 'hello world'
+			}
 		}
-}
-		
 	}
 }
