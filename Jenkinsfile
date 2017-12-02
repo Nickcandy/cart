@@ -6,29 +6,9 @@ pipeline{
 		}
 	}
 	stages{
-		stage('Git'){
-			steps{
-			sh '''
-				mkdir var/tmp/cart
-		 		cd var/tmp/cart
-		 		git init
-		 		git clone git@github.com:Nickcandy/cart.git
-		 	'''
-		 	}
+		steps{
+			echo 'hello world'
 		}
-		stage('Build'){
-			steps{
-			sh '''
-				cd var/tmp/cart/cart
-				mvn clean package -U
-				cp target/*.war var/tmp/tomcat/apache-tomcat-8.5.8/webapp
-				cd var/tmp/tomcat/apache-tomcat-8.5.8/bin
-				./startup.sh
-			'''
-				stash includes: 'target/*.war', name: 'app'
-			}
-		}
-
 
 		
 	}
