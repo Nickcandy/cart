@@ -8,7 +8,7 @@ pipeline{
 	}
 	stages{
 		stage('Git'){
-			script{
+			steps{
 			sh '''
 				mkdir var/tmp/cart
 		 		cd var/tmp/cart
@@ -18,7 +18,7 @@ pipeline{
 		 	}
 		}
 		stage('Build'){
-			script{
+			steps{
 			sh '''
 				cd var/tmp/cart/cart
 				mvn clean package -U
