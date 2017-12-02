@@ -5,8 +5,8 @@ pipeline{
 		stage('Example'){
 			agent {
 				docker{
-					image 'nickcandy/cartap'
-					args  '-it -d'
+					image 'alpine'
+
 				}
 			}
 			steps{
