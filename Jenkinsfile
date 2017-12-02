@@ -7,16 +7,18 @@ pipeline{
 		}
 	}
 	stages{
-		stage('git'){
+		stage('Git'){
+			script{
 			sh '''
 				mkdir var/tmp/cart
 		 		cd var/tmp/cart
 		 		git init
 		 		git clone git@github.com:Nickcandy/cart.git
 		 	'''
-
+		 	}
 		}
-		stage('build'){
+		stage('Build'){
+			script{
 			sh '''
 				cd var/tmp/cart/cart
 				mvn clean package -U
@@ -25,6 +27,7 @@ pipeline{
 				./startup.sh
 			'''
 				stash includes: 'target/*.war', name: 'app'
+			}
 		}
 
 
