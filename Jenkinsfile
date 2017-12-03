@@ -1,7 +1,8 @@
 pipeline {
     agent {
         docker {
-            dockerfile true
+            image 'maven:3-alpine'
+            customWorkspace '/root/.m2'
         }
     }
     stages {
