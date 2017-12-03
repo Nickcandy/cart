@@ -1,15 +1,12 @@
 pipeline {
     agent {
-    docker {
-        image 'maven:3-alpine' 	 
-        customWorkspace '/c/Users/liunanx/.jenkins/workspace'
+        docker { image 'node:7-alpine' }
     }
-} 
     stages {
-        stage('Example Build') {
+        stage('Test') {
             steps {
-                sh 'mvn -B clean verify'
+                sh 'node --version'
             }
         }
     }
-} 
+}
