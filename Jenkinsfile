@@ -2,7 +2,7 @@ pipeline {
     agent {
     docker {
         image 'maven:3-alpine' 	 
-        args '-v /target:/root/.m2'
+        customWorkspace '/c/workspace/'
     }
 } 
     stages {
