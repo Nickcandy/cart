@@ -2,7 +2,7 @@ pipeline {
     agent {
     docker {
         image 'maven:3-alpine' 	 
-        customWorkspace '/c/workspace/'
+        customWorkspace '/c/Users/liunanx/.jenkins/workspace'
     }
 } 
     stages {
