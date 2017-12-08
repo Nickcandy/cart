@@ -1,12 +1,16 @@
 
 FROM alpine
 MAINTAINER NICK
+RUN export http_proxy=http://web-proxy.houston.hpecorp.net:8080
+RUN export https_proxy=http://web-proxy.houston.hpecorp.net:8080
+RUN apk update
+RUN apk add wget --no-cache --update-cache  --allow-untrusted
 
 RUN mkdir var/tmp/jdk
 RUN mkdir var/tmp/tomcat
 RUN mkdir var/tmp/maven
 # JDK
-RUN wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie"  -P /var/tmp/jdk http://download.oracle.com/otn-pub/java/jdk/8u111-b14/jdk-8u111-linux-x64.tar.gz
+RUN wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie"  -P /var/tmp/jdk http://download.oracle.com/otn-pub/java/jdk/8u152-b16/aa0333dd3019491ca4f6ddbe78cdb6d0/jdk-8u152-linux-x64.tar.gz
 RUN tar xzf /var/tmp/jdk/jdk-8u111-linux-x64.tar.gz -C /var/tmp/jdk && rm -rf /var/tmp/jdk/jdk-8u111-linux-x64.tar.gz
 
 # maven
