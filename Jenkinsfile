@@ -2,7 +2,7 @@ pipeline {
      agent {
                    docker {
                         image 'nickcandy/cartap'
-                        args '-v /home/nick/cart:/home/nick -p 8888:8080'
+                        args '-d -v /home/nick/cart:/home/nick -p 8888:8080'
                         }
                 }
 
