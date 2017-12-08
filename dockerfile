@@ -1,7 +1,6 @@
 
 FROM alpine
 MAINTAINER NICK
-RUN apk add --no-cache --update-cache wget --repository http://mirrors.ustc.edu.cn/alpine/v3.7/main/
 
 RUN mkdir var/tmp/jdk
 RUN mkdir var/tmp/tomcat
