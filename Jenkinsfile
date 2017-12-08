@@ -18,8 +18,8 @@ pipeline {
 			}
 		}
 		stage('Deploy'){
-		/var/tmp/tomcat/apache-tomcat-7.0.82/bin/startup.sh
-
+			/var/tmp/tomcat/apache-tomcat-7.0.82/bin/startup.sh
+		}
 
     }
 }
