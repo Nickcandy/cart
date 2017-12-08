@@ -22,6 +22,11 @@ pipeline {
 				sh '/var/tmp/tomcat/apache-tomcat-7.0.82/bin/startup.sh'
 			}
 		}
+		   stage('check') {
+            steps {
+                input "?"
+            }
+        }
 
 
     }
