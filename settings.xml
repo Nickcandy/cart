@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <pluginGroups>
+        <!-- pluginGroup
+         | Specifies a further group identifier to use for plugin lookup.
+        <pluginGroup>com.your.plugins</pluginGroup>
+        -->
+    </pluginGroups>
+
+    <proxies>
+        <proxy>
+            <active>true</active>
+            <protocol>http</protocol>
+            <host>web-proxy.houston.hpecorp.net</host>
+            <port>8080</port>
+            <!--
+            <nonProxyHosts>localhost|shcitsmaxdl01.hpeswlab.net</nonProxyHosts>
+            -->
+            <nonProxyHosts>localhost</nonProxyHosts>
+        </proxy>
+        <proxy>
+            <id>optional</id>
+            <active>true</active>
+            <protocol>https</protocol>
+            <host>web-proxy.houston.hpecorp.net</host>
+            <port>8080</port>
+            <!--
+            <nonProxyHosts>localhost|shcitsmaxdl01.hpeswlab.net</nonProxyHosts>
+            -->
+            <nonProxyHosts>localhost|shc-itsmax-ha.hpeswlab.net|shcitsmaxdl01.hpeswlab.net</nonProxyHosts>
+        </proxy>
+    </proxies>
+
+    <servers>
+        <server>
+            <id>tomcat7</id>
+            <username>admin</username>
+            <password>admin</password>
+        </server>
+        <server>  
+            <id>user-snapshots</id>  
+            <username>deployment</username>  
+            <password>admin</password>  
+        </server>  
+    </servers>
+    <mirrors>
+    </mirrors>
+
+    <profiles>
+        <profile>
+            <id>bo-sh</id>
+            <repositories>
+                <repository>
+                    <id>bo-public</id>
+                    <url>http://shcitsmaxdl01.hpeswlab.net:8081/nexus/content/groups/back-office-public/</url>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+			<pluginRepositories>
+                <pluginRepository>
+                    <id>nexus</id>
+                    <url>http://shcitsmaxdl01.hpeswlab.net:8081/nexus/content/repositories/maven-central/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+    <activeProfiles>
+        <activeProfile>bo-sh</activeProfile>
+    </activeProfiles>
+</settings>
