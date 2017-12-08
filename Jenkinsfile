@@ -11,7 +11,7 @@ pipeline {
 			steps{
 			sh '''
 				mvn -s /home/nick/settings.xml clean package 
-				cp target/*.war var/tmp/tomcat/apache-tomcat-8.5.8/webapp
+				cp target/*.war var/tmp/tomcat/apache-tomcat-8.5.8/webapps
 				cd var/tmp/tomcat/apache-tomcat-8.5.8/bin
 				./startup.sh
 			'''
