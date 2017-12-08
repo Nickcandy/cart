@@ -10,6 +10,7 @@ pipeline {
 		stage('Build'){
 			steps{
 			sh '''
+				cd /home/nick
 				mvn -s /home/nick/settings.xml clean package 
 				cp target/*.war /var/tmp/tomcat/apache-tomcat-7.0.82/webapps
 			
